@@ -22,10 +22,9 @@ interfaces Datasheet - production data Features
 
 All the above mentioned LCD display will have 16 Pins and the programming approach is also the same and hence the choice is left to you. 
 Below is the Pinout and Pin Description of 16x2 LCD Module:
-
-![image](https://user-images.githubusercontent.com/36288975/233858086-7b1a88a2-f941-475c-86c2-b3bae68bdf7e.png)
-![image](https://user-images.githubusercontent.com/36288975/233857710-541ac1c2-786c-4dfc-b7b5-e3a4868a9cb6.png)
-![image](https://user-images.githubusercontent.com/36288975/233857733-05df5dbf-1a1e-479e-85bb-8014a39ad878.png)
+<img height=30% width=80% src="https://user-images.githubusercontent.com/36288975/233858086-7b1a88a2-f941-475c-86c2-b3bae68bdf7e.png">
+<img height=30% width=80% src="https://user-images.githubusercontent.com/36288975/233857710-541ac1c2-786c-4dfc-b7b5-e3a4868a9cb6.png">
+<img height=30% width=80% src="https://user-images.githubusercontent.com/36288975/233857733-05df5dbf-1a1e-479e-85bb-8014a39ad878.png">
 
 4-bit and 8-bit Mode of LCD:
 
@@ -35,83 +34,44 @@ Whereas in 8 bit mode we can send the 8-bit data directly in one stroke since we
 
  8-bit mode is faster and flawless than 4-bit mode. But the major drawback is that it needs 8 data lines connected to the microcontroller. This will make us run out of I/O pins on our MCU, so 4-bit mode is widely used. No control pins are used to set these modes. 
  LCD Commands:
-
 There are some preset commands instructions in LCD, which we need to send to LCD through some microcontroller. Some important command instructions are given below:
-
 Hex Code
-
 Command to LCD Instruction Register
-
 0F
-
 LCD ON, cursor ON
-
 01
-
 Clear display screen
-
 02
-
 Return home
-
 04
-
 Decrement cursor (shift cursor to left)
-
 06
-
 Increment cursor (shift cursor to right)
-
 05
-
 Shift display right
-
 07
-
 Shift display left
-
 0E
-
 Display ON, cursor blinking
-
 80
-
 Force cursor to beginning of first line
-
 C0
-
 Force cursor to beginning of second line
-
 38
-
 2 lines and 5×7 matrix
-
 83
-
 Cursor line 1 position 3
-
 3C
-
 Activate second line
-
 08
-
 Display OFF, cursor OFF
-
 C1
-
 Jump to second line, position 1
-
 OC
-
 Display ON, cursor OFF
-
 C1
-
 Jump to second line, position 1
-
 C2
-
 Jump to second line, position 2
  
 ## Procedure:
