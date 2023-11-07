@@ -175,37 +175,48 @@ https://engineeringxpert.com/wp-content/uploads/2022/04/26.png
 ## STM 32 CUBE PROGRAM :
 ```
 #include "main.h"
-#include "lcd.h"df
-
+#include "lcd.h"
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-
 int main(void)
 {
+
   HAL_Init();
+
   SystemClock_Config();
+
   MX_GPIO_Init();
 
-  Lcd_PortType ports[] = { GPIOA, GPIOA, GPIOA, GPIOA };
-  Lcd_PinType pins[] = {GPIO_PIN_3, GPIO_PIN_2, GPIO_PIN_1, GPIO_PIN_0};
-  Lcd_HandleTypeDef lcd;
-  lcd = Lcd_create(ports, pins, GPIOB, GPIO_PIN_0, GPIOB, GPIO_PIN_1, LCD_4_BIT_MODE);
-  Lcd_cursor(&lcd, 0,1);
-  Lcd_string(&lcd, "Krishnaraj D");
+  	  Lcd_PortType ports[] = { GPIOA, GPIOA, GPIOA, GPIOA};
+  	  Lcd_PinType pins[] = {GPIO_PIN_3, GPIO_PIN_2, GPIO_PIN_1, GPIO_PIN_0};
+  	  Lcd_HandleTypeDef lcd;
+  	  lcd = Lcd_create(ports, pins, GPIOB, GPIO_PIN_0, GPIOB, GPIO_PIN_1, LCD_4_BIT_MODE);
+
   while (1)
   {
-	  for ( int x = 1; x <= 200 ; x++ )
-	  { Lcd_cursor(&lcd, 1,7);
-	  Lcd_int(&lcd, x);
-	  HAL_Delay (1000); }
+	  Lcd_cursor(&lcd, 0,1);
+	  Lcd_string(&lcd, "KRISHNARAJ-D\n");
+
+
+	  for(int x=0;x<100;x++)
+	  {
+		  Lcd_cursor(&lcd, 1,0);
+		  Lcd_string(&lcd, "212222230070");
+		  HAL_Delay (200);
+
+	  }
+	  Lcd_clear(&lcd);
   }
-}
+
+  }
+
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
@@ -226,37 +237,54 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
+
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : PA0 PA1 PA2 PA3 */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB0 PB1 */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
 }
+
 void Error_Handler(void)
 {
   __disable_irq();
   while (1)
   {
   }
+  /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef 
+#ifdef  USE_FULL_ASSERT
+
 void assert_failed(uint8_t *file, uint32_t line)
 {
+
 }
-#endif
+#endif /* USE_FULL_ASSERT */
+
 ```
 
 
